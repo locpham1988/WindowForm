@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNHModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QLNHEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="DVTinh" EntityType="QLNHModel.DVTinh" />
+    <EntitySet Name="tbMatHang" EntityType="QLNHModel.tbMatHang" />
+    <EntitySet Name="tbNhanHang" EntityType="QLNHModel.tbNhanHang" />
+    <EntitySet Name="tbPhieuNhap" EntityType="QLNHModel.tbPhieuNhap" />
+    <EntitySet Name="tbUsers" EntityType="QLNHModel.tbUsers" />
+    <AssociationSet Name="FK_DVTinh_PhieuNhap" Association="QLNHModel.FK_DVTinh_PhieuNhap">
+      <End Role="DVTinh" EntitySet="DVTinh" />
+      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbMatHang_tbNhanHang" Association="QLNHModel.FK_tbMatHang_tbNhanHang">
+      <End Role="tbNhanHang" EntitySet="tbNhanHang" />
+      <End Role="tbMatHang" EntitySet="tbMatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_PhieuNhap" Association="QLNHModel.FK_Users_PhieuNhap">
+      <End Role="tbUsers" EntitySet="tbUsers" />
+      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DVTinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDVTinh" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="tbPhieuNhap" Relationship="QLNHModel.FK_DVTinh_PhieuNhap" FromRole="DVTinh" ToRole="tbPhieuNhap" />
+  </EntityType>
+  <EntityType Name="tbMatHang">
+    <Key>
+      <PropertyRef Name="MaHang" />
+    </Key>
+    <Property Name="MaHang" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="TenHang" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Created" Type="DateTime" />
+    <Property Name="Updated" Type="DateTime" />
+    <Property Name="MaNhanHang" Type="Int32" />
+    <NavigationProperty Name="tbNhanHang" Relationship="QLNHModel.FK_tbMatHang_tbNhanHang" FromRole="tbMatHang" ToRole="tbNhanHang" />
+  </EntityType>
+  <EntityType Name="tbNhanHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhanHang" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="tbMatHang" Relationship="QLNHModel.FK_tbMatHang_tbNhanHang" FromRole="tbNhanHang" ToRole="tbMatHang" />
+  </EntityType>
+  <EntityType Name="tbPhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPhieuNhap" />
+    </Key>
+    <Property Name="MaPhieuNhap" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="MaMatHang" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="MaDVTinh" Type="Int32" />
+    <Property Name="SoLuong" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="TongHoaDon" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="NgayNhap" Type="DateTime" />
+    <Property Name="NgayCapNhat" Type="DateTime" />
+    <Property Name="MaNguoiNhap" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="DVTinh" Relationship="QLNHModel.FK_DVTinh_PhieuNhap" FromRole="tbPhieuNhap" ToRole="DVTinh" />
+    <NavigationProperty Name="tbUsers" Relationship="QLNHModel.FK_Users_PhieuNhap" FromRole="tbPhieuNhap" ToRole="tbUsers" />
+  </EntityType>
+  <EntityType Name="tbUsers">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Fullname" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="tbPhieuNhap" Relationship="QLNHModel.FK_Users_PhieuNhap" FromRole="tbUsers" ToRole="tbPhieuNhap" />
+  </EntityType>
+  <Association Name="FK_DVTinh_PhieuNhap">
+    <End Role="DVTinh" Type="QLNHModel.DVTinh" Multiplicity="0..1" />
+    <End Role="tbPhieuNhap" Type="QLNHModel.tbPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DVTinh">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbPhieuNhap">
+        <PropertyRef Name="MaDVTinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbMatHang_tbNhanHang">
+    <End Role="tbNhanHang" Type="QLNHModel.tbNhanHang" Multiplicity="0..1" />
+    <End Role="tbMatHang" Type="QLNHModel.tbMatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbNhanHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbMatHang">
+        <PropertyRef Name="MaNhanHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_PhieuNhap">
+    <End Role="tbUsers" Type="QLNHModel.tbUsers" Multiplicity="0..1" />
+    <End Role="tbPhieuNhap" Type="QLNHModel.tbPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsers">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="tbPhieuNhap">
+        <PropertyRef Name="MaNguoiNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

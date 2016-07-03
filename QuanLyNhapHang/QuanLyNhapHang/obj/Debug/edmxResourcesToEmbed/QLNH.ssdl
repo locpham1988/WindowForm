@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNHModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="QLNHModelStoreContainer">
+    <EntitySet Name="DVTinh" EntityType="QLNHModel.Store.DVTinh" store:Type="Tables" />
+    <EntitySet Name="tbMatHang" EntityType="QLNHModel.Store.tbMatHang" store:Type="Tables" />
+    <EntitySet Name="tbNhanHang" EntityType="QLNHModel.Store.tbNhanHang" store:Type="Tables" />
+    <EntitySet Name="tbPhieuNhap" EntityType="QLNHModel.Store.tbPhieuNhap" store:Type="Tables" />
+    <EntitySet Name="tbUsers" EntityType="QLNHModel.Store.tbUsers" store:Type="Tables" />
+    <AssociationSet Name="FK_DVTinh_PhieuNhap" Association="QLNHModel.Store.FK_DVTinh_PhieuNhap">
+      <End Role="DVTinh" EntitySet="DVTinh" />
+      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbMatHang_tbNhanHang" Association="QLNHModel.Store.FK_tbMatHang_tbNhanHang">
+      <End Role="tbNhanHang" EntitySet="tbNhanHang" />
+      <End Role="tbMatHang" EntitySet="tbMatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_PhieuNhap" Association="QLNHModel.Store.FK_Users_PhieuNhap">
+      <End Role="tbUsers" EntitySet="tbUsers" />
+      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DVTinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TenDVTinh" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbMatHang">
+    <Key>
+      <PropertyRef Name="MaHang" />
+    </Key>
+    <Property Name="MaHang" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="TenHang" Type="nvarchar" MaxLength="100" />
+    <Property Name="Created" Type="datetime" />
+    <Property Name="Updated" Type="datetime" />
+    <Property Name="MaNhanHang" Type="int" />
+  </EntityType>
+  <EntityType Name="tbNhanHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhanHang" Type="nvarchar" Nullable="false" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="tbPhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPhieuNhap" />
+    </Key>
+    <Property Name="MaPhieuNhap" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="MaMatHang" Type="nvarchar" MaxLength="100" />
+    <Property Name="MaDVTinh" Type="int" />
+    <Property Name="SoLuong" Type="nvarchar" MaxLength="100" />
+    <Property Name="TongHoaDon" Type="nvarchar" MaxLength="100" />
+    <Property Name="NgayNhap" Type="datetime" />
+    <Property Name="NgayCapNhat" Type="datetime" />
+    <Property Name="MaNguoiNhap" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbUsers">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Role" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Fullname" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_DVTinh_PhieuNhap">
+    <End Role="DVTinh" Type="QLNHModel.Store.DVTinh" Multiplicity="0..1" />
+    <End Role="tbPhieuNhap" Type="QLNHModel.Store.tbPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DVTinh">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbPhieuNhap">
+        <PropertyRef Name="MaDVTinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbMatHang_tbNhanHang">
+    <End Role="tbNhanHang" Type="QLNHModel.Store.tbNhanHang" Multiplicity="0..1" />
+    <End Role="tbMatHang" Type="QLNHModel.Store.tbMatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbNhanHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbMatHang">
+        <PropertyRef Name="MaNhanHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_PhieuNhap">
+    <End Role="tbUsers" Type="QLNHModel.Store.tbUsers" Multiplicity="0..1" />
+    <End Role="tbPhieuNhap" Type="QLNHModel.Store.tbPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsers">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="tbPhieuNhap">
+        <PropertyRef Name="MaNguoiNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
