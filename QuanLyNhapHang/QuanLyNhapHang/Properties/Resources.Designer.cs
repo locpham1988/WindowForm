@@ -123,6 +123,26 @@ namespace QuanLyNhapHang.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap document_save {
+            get {
+                object obj = ResourceManager.GetObject("document_save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap documents_white_edit {
+            get {
+                object obj = ResourceManager.GetObject("documents_white_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap emblem_system {
             get {
                 object obj = ResourceManager.GetObject("emblem_system", resourceCulture);
@@ -136,6 +156,16 @@ namespace QuanLyNhapHang.Properties {
         internal static System.Drawing.Bitmap gnome_logout {
             get {
                 object obj = ResourceManager.GetObject("gnome_logout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gnome_session_logout {
+            get {
+                object obj = ResourceManager.GetObject("gnome_session_logout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -247,6 +277,25 @@ namespace QuanLyNhapHang.Properties {
             get {
                 object obj = ResourceManager.GetObject("search24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap symbol_refresh {
+            get {
+                object obj = ResourceManager.GetObject("symbol_refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT m.MaHang,m.TenHang,m.MaNhanHang,m.Created,m.Updated.
+        /// </summary>
+        internal static string tbBangGia {
+            get {
+                return ResourceManager.GetString("tbBangGia", resourceCulture);
             }
         }
         

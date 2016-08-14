@@ -33,8 +33,8 @@
     </Key>
     <Property Name="MaHang" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
     <Property Name="TenHang" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-    <Property Name="Created" Type="DateTime" />
-    <Property Name="Updated" Type="DateTime" />
+    <Property Name="Created" Type="DateTime" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
     <Property Name="MaNhanHang" Type="Int32" />
     <NavigationProperty Name="tbNhanHang" Relationship="QLNHModel.FK_tbMatHang_tbNhanHang" FromRole="tbMatHang" ToRole="tbNhanHang" />
   </EntityType>
@@ -55,11 +55,12 @@
     <Property Name="MaDVTinh" Type="Int32" />
     <Property Name="SoLuong" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
     <Property Name="TongHoaDon" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-    <Property Name="NgayNhap" Type="DateTime" />
-    <Property Name="NgayCapNhat" Type="DateTime" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+    <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
     <Property Name="MaNguoiNhap" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="DVTinh" Relationship="QLNHModel.FK_DVTinh_PhieuNhap" FromRole="tbPhieuNhap" ToRole="DVTinh" />
     <NavigationProperty Name="tbUsers" Relationship="QLNHModel.FK_Users_PhieuNhap" FromRole="tbPhieuNhap" ToRole="tbUsers" />
+    <Property Name="GiaNhap" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="tbUsers">
     <Key>

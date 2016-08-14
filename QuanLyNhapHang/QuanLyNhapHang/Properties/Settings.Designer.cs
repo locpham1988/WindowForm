@@ -22,26 +22,5 @@ namespace QuanLyNhapHang.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\Db\\QLNH.mdf;Integrat" +
-            "ed Security=True")]
-        public string QLNHConnectionString {
-            get {
-                return ((string)(this["QLNHConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\Db\\QLNH.sdf")]
-        public string QLNHConnectionString1 {
-            get {
-                return ((string)(this["QLNHConnectionString1"]));
-            }
-        }
     }
 }

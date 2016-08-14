@@ -31,6 +31,7 @@
     <EntitySetMapping Name="tbPhieuNhap">
       <EntityTypeMapping TypeName="QLNHModel.tbPhieuNhap">
         <MappingFragment StoreEntitySet="tbPhieuNhap">
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
           <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
           <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
           <ScalarProperty Name="MaDVTinh" ColumnName="MaDVTinh" />

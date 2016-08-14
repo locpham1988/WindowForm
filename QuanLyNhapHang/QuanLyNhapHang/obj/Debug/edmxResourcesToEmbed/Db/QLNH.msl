@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLNHModelStoreContainer" CdmEntityContainer="QLNHEntities">
+    <EntitySetMapping Name="DVTinhs">
+      <EntityTypeMapping TypeName="QLNHModel.DVTinh">
+        <MappingFragment StoreEntitySet="DVTinh">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenDVTinh" ColumnName="TenDVTinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbMatHangs">
+      <EntityTypeMapping TypeName="QLNHModel.tbMatHang">
+        <MappingFragment StoreEntitySet="tbMatHang">
+          <ScalarProperty Name="MaHang" ColumnName="MaHang" />
+          <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="MaNhanHang" ColumnName="MaNhanHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbNhanHangs">
+      <EntityTypeMapping TypeName="QLNHModel.tbNhanHang">
+        <MappingFragment StoreEntitySet="tbNhanHang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TenNhanHang" ColumnName="TenNhanHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbPhieuNhaps">
+      <EntityTypeMapping TypeName="QLNHModel.tbPhieuNhap">
+        <MappingFragment StoreEntitySet="tbPhieuNhap">
+          <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
+          <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+          <ScalarProperty Name="MaDVTinh" ColumnName="MaDVTinh" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="TongHoaDon" ColumnName="TongHoaDon" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="MaNguoiNhap" ColumnName="MaNguoiNhap" />
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbUsers">
+      <EntityTypeMapping TypeName="QLNHModel.tbUser">
+        <MappingFragment StoreEntitySet="tbUsers">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

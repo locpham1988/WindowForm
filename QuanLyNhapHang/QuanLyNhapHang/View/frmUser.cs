@@ -50,7 +50,7 @@ namespace QuanLyNhapHang.View
             if (valid()==true)
             {
                
-                _IUser.Create(new Model.User { 
+                _IUser.Create(new Model.UserModel { 
                     UserName = this.txtUserName.Text.Trim(),
                     Password = this.txtPassword.Text.Trim().Encrypt(),
                     FullName = this.txtFullName.Text.Trim(),

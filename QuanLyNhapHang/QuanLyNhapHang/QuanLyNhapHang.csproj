@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>E:\Working\TEst\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,13 +22,15 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -45,6 +47,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>QuanLyNhapHang.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>6C4B5FDC99AFDAE8CC779CEBEE8CD3C80E5D60CA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>QuanLyNhapHang_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -78,42 +95,92 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DVTinh.cs">
+    <Compile Include="Db\DVTinh.cs">
       <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
-    <Compile Include="Helper\Md5Helper.cs" />
-    <Compile Include="Model\UserModel.cs" />
-    <Compile Include="Model\UserRoles.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QLNH.Context.cs">
+    <Compile Include="Db\QLNH.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLNH.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="QLNH.cs">
+    <Compile Include="Db\QLNH.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLNH.tt</DependentUpon>
     </Compile>
-    <Compile Include="QLNH.Designer.cs">
+    <Compile Include="Db\QLNH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLNH.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Db\tbDMPhieuNhap.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbMatHang.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbNhanHang.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbPhieuNhap.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Db\tbUser.cs">
+      <DependentUpon>QLNH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\Md5Helper.cs" />
+    <Compile Include="Model\CommonObjectModel.cs" />
+    <Compile Include="Model\tbMatHangModel.cs" />
+    <Compile Include="Model\tbMatHangNhapModel.cs" />
+    <Compile Include="Model\tbPhieuNhap.cs" />
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\UserRoles.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responsities\DVTinhResponsity.cs" />
+    <Compile Include="Responsities\IDBActionContext.cs" />
+    <Compile Include="Responsities\ISearchContext.cs" />
     <Compile Include="Responsities\IUser.cs" />
+    <Compile Include="Responsities\SearchResponsity.cs" />
+    <Compile Include="Responsities\tbMatHangResponsity.cs" />
+    <Compile Include="Responsities\tbNhanHangResponsity.cs" />
     <Compile Include="Responsities\UserResponsity.cs" />
-    <Compile Include="tbMatHang.cs">
-      <DependentUpon>QLNH.tt</DependentUpon>
+    <Compile Include="View\frmBangGia.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="tbNhanHang.cs">
-      <DependentUpon>QLNH.tt</DependentUpon>
+    <Compile Include="View\frmBangGia.Designer.cs">
+      <DependentUpon>frmBangGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="tbPhieuNhap.cs">
-      <DependentUpon>QLNH.tt</DependentUpon>
+    <Compile Include="View\frmMatHang.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="tbUsers.cs">
-      <DependentUpon>QLNH.tt</DependentUpon>
+    <Compile Include="View\frmMatHang.Designer.cs">
+      <DependentUpon>frmMatHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmNhanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmNhanHang.Designer.cs">
+      <DependentUpon>frmNhanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmPhieuNhap.Designer.cs">
+      <DependentUpon>frmPhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmSearchPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmSearchPhieuNhap.Designer.cs">
+      <DependentUpon>frmSearchPhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmTaoPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmTaoPhieuNhap.Designer.cs">
+      <DependentUpon>frmTaoPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmUser.cs">
       <SubType>Form</SubType>
@@ -139,12 +206,6 @@
     <Compile Include="View\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmNhanhang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmNhanhang.Designer.cs">
-      <DependentUpon>frmNhanhang.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -155,6 +216,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\frmBangGia.resx">
+      <DependentUpon>frmBangGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMatHang.resx">
+      <DependentUpon>frmMatHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmNhanHang.resx">
+      <DependentUpon>frmNhanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmPhieuNhap.resx">
+      <DependentUpon>frmPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmSearchPhieuNhap.resx">
+      <DependentUpon>frmSearchPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmTaoPhieuNhap.resx">
+      <DependentUpon>frmTaoPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,9 +246,23 @@
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\frmNhanhang.resx">
-      <DependentUpon>frmNhanhang.cs</DependentUpon>
-    </EmbeddedResource>
+    <EntityDeploy Include="Db\QLNH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLNH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Db\QLNH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLNH.edmx</DependentUpon>
+      <LastGenOutput>QLNH.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Db\QLNH.edmx.diagram">
+      <DependentUpon>QLNH.edmx</DependentUpon>
+    </None>
+    <None Include="Db\QLNH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLNH.edmx</DependentUpon>
+      <LastGenOutput>QLNH.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -182,26 +275,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="QLNH.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLNH.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="QLNH.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLNH.Context.cs</LastGenOutput>
-      <DependentUpon>QLNH.edmx</DependentUpon>
-    </None>
-    <None Include="QLNH.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLNH.cs</LastGenOutput>
-      <DependentUpon>QLNH.edmx</DependentUpon>
-    </None>
-    <None Include="QLNHedmx.diagram">
-      <DependentUpon>QLNH.edmx</DependentUpon>
-    </None>
     <None Include="Resources\login.png" />
     <None Include="Resources\invoice_1.png" />
     <None Include="Resources\medical_invoice_information.png" />
@@ -249,9 +327,13 @@
     <Folder Include="Db\Query\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Db\QLNH.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="QLNH.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\document_save.png" />
+    <None Include="Resources\documents_white_edit.png" />
+    <None Include="Resources\gnome_session_logout.png" />
+    <None Include="Resources\symbol_refresh.png" />
     <None Include="Resources\search16.png" />
     <None Include="Resources\search24.png" />
     <None Include="Resources\add16.png" />

@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLNHModel.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DVTinh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDVTinh" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbDMPhieuNhap">
+          <Key>
+            <PropertyRef Name="MaPhieuNhap" />
+          </Key>
+          <Property Name="MaPhieuNhap" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TongHoaDon" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NgayNhap" Type="datetime" />
+          <Property Name="NgayCapNhat" Type="datetime" />
+          <Property Name="MoTa" Type="ntext" />
+        </EntityType>
+        <EntityType Name="tbMatHang">
+          <Key>
+            <PropertyRef Name="MaHang" />
+          </Key>
+          <Property Name="MaHang" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TenHang" Type="nvarchar" MaxLength="100" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Updated" Type="datetime" />
+          <Property Name="MaNhanHang" Type="int" />
+        </EntityType>
+        <EntityType Name="tbNhanHang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNhanHang" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbPhieuNhap">
+          <Key>
+            <PropertyRef Name="MaPhieuNhap" />
+          </Key>
+          <Property Name="MaPhieuNhap" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MaMatHang" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaDVTinh" Type="int" />
+          <Property Name="SoLuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="TongHoaDon" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayNhap" Type="datetime" />
+          <Property Name="NgayCapNhat" Type="datetime" />
+          <Property Name="MaNguoiNhap" Type="nvarchar" MaxLength="100" />
+          <Property Name="GiaNhap" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbUsers">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_DMPhieuNhap_PhieuNhap">
+          <End Role="tbDMPhieuNhap" Type="Self.tbDMPhieuNhap" Multiplicity="1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbDMPhieuNhap">
+              <PropertyRef Name="MaPhieuNhap" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaPhieuNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DVTinh_PhieuNhap">
+          <End Role="DVTinh" Type="Self.DVTinh" Multiplicity="0..1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DVTinh">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaDVTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMatHang_tbNhanHang">
+          <End Role="tbNhanHang" Type="Self.tbNhanHang" Multiplicity="0..1" />
+          <End Role="tbMatHang" Type="Self.tbMatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNhanHang">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbMatHang">
+              <PropertyRef Name="MaNhanHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMatHang_tbPhieuNhap">
+          <End Role="tbMatHang" Type="Self.tbMatHang" Multiplicity="0..1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMatHang">
+              <PropertyRef Name="MaHang" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_PhieuNhap">
+          <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsers">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaNguoiNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLNHModelStoreContainer">
+          <EntitySet Name="DVTinh" EntityType="Self.DVTinh" store:Type="Tables" />
+          <EntitySet Name="tbDMPhieuNhap" EntityType="Self.tbDMPhieuNhap" store:Type="Tables" />
+          <EntitySet Name="tbMatHang" EntityType="Self.tbMatHang" store:Type="Tables" />
+          <EntitySet Name="tbNhanHang" EntityType="Self.tbNhanHang" store:Type="Tables" />
+          <EntitySet Name="tbPhieuNhap" EntityType="Self.tbPhieuNhap" store:Type="Tables" />
+          <EntitySet Name="tbUsers" EntityType="Self.tbUsers" store:Type="Tables" />
+          <AssociationSet Name="FK_DMPhieuNhap_PhieuNhap" Association="Self.FK_DMPhieuNhap_PhieuNhap">
+            <End Role="tbDMPhieuNhap" EntitySet="tbDMPhieuNhap" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DVTinh_PhieuNhap" Association="Self.FK_DVTinh_PhieuNhap">
+            <End Role="DVTinh" EntitySet="DVTinh" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMatHang_tbNhanHang" Association="Self.FK_tbMatHang_tbNhanHang">
+            <End Role="tbNhanHang" EntitySet="tbNhanHang" />
+            <End Role="tbMatHang" EntitySet="tbMatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMatHang_tbPhieuNhap" Association="Self.FK_tbMatHang_tbPhieuNhap">
+            <End Role="tbMatHang" EntitySet="tbMatHang" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_PhieuNhap" Association="Self.FK_Users_PhieuNhap">
+            <End Role="tbUsers" EntitySet="tbUsers" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLNHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DVTinh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDVTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbPhieuNhaps" Relationship="Self.FK_DVTinh_PhieuNhap" FromRole="DVTinh" ToRole="tbPhieuNhap" />
+        </EntityType>
+        <EntityType Name="tbDMPhieuNhap">
+          <Key>
+            <PropertyRef Name="MaPhieuNhap" />
+          </Key>
+          <Property Name="MaPhieuNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TongHoaDon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+          <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbPhieuNhap" Relationship="Self.FK_DMPhieuNhap_PhieuNhap" FromRole="tbDMPhieuNhap" ToRole="tbPhieuNhap" />
+        </EntityType>
+        <EntityType Name="tbMatHang">
+          <Key>
+            <PropertyRef Name="MaHang" />
+          </Key>
+          <Property Name="MaHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Updated" Type="DateTime" Precision="3" />
+          <Property Name="MaNhanHang" Type="Int32" />
+          <NavigationProperty Name="tbNhanHang" Relationship="Self.FK_tbMatHang_tbNhanHang" FromRole="tbMatHang" ToRole="tbNhanHang" />
+          <NavigationProperty Name="tbPhieuNhaps" Relationship="Self.FK_tbMatHang_tbPhieuNhap" FromRole="tbMatHang" ToRole="tbPhieuNhap" />
+        </EntityType>
+        <EntityType Name="tbNhanHang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNhanHang" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMatHangs" Relationship="Self.FK_tbMatHang_tbNhanHang" FromRole="tbNhanHang" ToRole="tbMatHang" />
+        </EntityType>
+        <EntityType Name="tbPhieuNhap">
+          <Key>
+            <PropertyRef Name="MaPhieuNhap" />
+          </Key>
+          <Property Name="MaPhieuNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaMatHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaDVTinh" Type="Int32" />
+          <Property Name="SoLuong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TongHoaDon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+          <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
+          <Property Name="MaNguoiNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GiaNhap" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="DVTinh" Relationship="Self.FK_DVTinh_PhieuNhap" FromRole="tbPhieuNhap" ToRole="DVTinh" />
+          <NavigationProperty Name="tbDMPhieuNhap" Relationship="Self.FK_DMPhieuNhap_PhieuNhap" FromRole="tbPhieuNhap" ToRole="tbDMPhieuNhap" />
+          <NavigationProperty Name="tbMatHang" Relationship="Self.FK_tbMatHang_tbPhieuNhap" FromRole="tbPhieuNhap" ToRole="tbMatHang" />
+          <NavigationProperty Name="tbUser" Relationship="Self.FK_Users_PhieuNhap" FromRole="tbPhieuNhap" ToRole="tbUsers" />
+        </EntityType>
+        <EntityType Name="tbUser">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbPhieuNhaps" Relationship="Self.FK_Users_PhieuNhap" FromRole="tbUsers" ToRole="tbPhieuNhap" />
+        </EntityType>
+        <Association Name="FK_DVTinh_PhieuNhap">
+          <End Role="DVTinh" Type="Self.DVTinh" Multiplicity="0..1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DVTinh">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaDVTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DMPhieuNhap_PhieuNhap">
+          <End Role="tbDMPhieuNhap" Type="Self.tbDMPhieuNhap" Multiplicity="1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbDMPhieuNhap">
+              <PropertyRef Name="MaPhieuNhap" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaPhieuNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMatHang_tbNhanHang">
+          <End Role="tbNhanHang" Type="Self.tbNhanHang" Multiplicity="0..1" />
+          <End Role="tbMatHang" Type="Self.tbMatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNhanHang">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbMatHang">
+              <PropertyRef Name="MaNhanHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMatHang_tbPhieuNhap">
+          <End Role="tbMatHang" Type="Self.tbMatHang" Multiplicity="0..1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMatHang">
+              <PropertyRef Name="MaHang" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_PhieuNhap">
+          <End Role="tbUsers" Type="Self.tbUser" Multiplicity="0..1" />
+          <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsers">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="tbPhieuNhap">
+              <PropertyRef Name="MaNguoiNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DVTinhs" EntityType="Self.DVTinh" />
+          <EntitySet Name="tbDMPhieuNhaps" EntityType="Self.tbDMPhieuNhap" />
+          <EntitySet Name="tbMatHangs" EntityType="Self.tbMatHang" />
+          <EntitySet Name="tbNhanHangs" EntityType="Self.tbNhanHang" />
+          <EntitySet Name="tbPhieuNhaps" EntityType="Self.tbPhieuNhap" />
+          <EntitySet Name="tbUsers" EntityType="Self.tbUser" />
+          <AssociationSet Name="FK_DVTinh_PhieuNhap" Association="Self.FK_DVTinh_PhieuNhap">
+            <End Role="DVTinh" EntitySet="DVTinhs" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DMPhieuNhap_PhieuNhap" Association="Self.FK_DMPhieuNhap_PhieuNhap">
+            <End Role="tbDMPhieuNhap" EntitySet="tbDMPhieuNhaps" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMatHang_tbNhanHang" Association="Self.FK_tbMatHang_tbNhanHang">
+            <End Role="tbNhanHang" EntitySet="tbNhanHangs" />
+            <End Role="tbMatHang" EntitySet="tbMatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMatHang_tbPhieuNhap" Association="Self.FK_tbMatHang_tbPhieuNhap">
+            <End Role="tbMatHang" EntitySet="tbMatHangs" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_PhieuNhap" Association="Self.FK_Users_PhieuNhap">
+            <End Role="tbUsers" EntitySet="tbUsers" />
+            <End Role="tbPhieuNhap" EntitySet="tbPhieuNhaps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLNHModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="DVTinhs">
+            <EntityTypeMapping TypeName="QLNHModel.DVTinh">
+              <MappingFragment StoreEntitySet="DVTinh">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenDVTinh" ColumnName="TenDVTinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDMPhieuNhaps">
+            <EntityTypeMapping TypeName="QLNHModel.tbDMPhieuNhap">
+              <MappingFragment StoreEntitySet="tbDMPhieuNhap">
+                <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
+                <ScalarProperty Name="TongHoaDon" ColumnName="TongHoaDon" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMatHangs">
+            <EntityTypeMapping TypeName="QLNHModel.tbMatHang">
+              <MappingFragment StoreEntitySet="tbMatHang">
+                <ScalarProperty Name="MaHang" ColumnName="MaHang" />
+                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Updated" ColumnName="Updated" />
+                <ScalarProperty Name="MaNhanHang" ColumnName="MaNhanHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbNhanHangs">
+            <EntityTypeMapping TypeName="QLNHModel.tbNhanHang">
+              <MappingFragment StoreEntitySet="tbNhanHang">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenNhanHang" ColumnName="TenNhanHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPhieuNhaps">
+            <EntityTypeMapping TypeName="QLNHModel.tbPhieuNhap">
+              <MappingFragment StoreEntitySet="tbPhieuNhap">
+                <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
+                <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+                <ScalarProperty Name="MaDVTinh" ColumnName="MaDVTinh" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="TongHoaDon" ColumnName="TongHoaDon" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+                <ScalarProperty Name="MaNguoiNhap" ColumnName="MaNguoiNhap" />
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsers">
+            <EntityTypeMapping TypeName="QLNHModel.tbUser">
+              <MappingFragment StoreEntitySet="tbUsers">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

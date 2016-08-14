@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyNhapHang.Db;
+using QuanLyNhapHang.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,41 +22,45 @@ namespace QuanLyNhapHang.Responsities
             
         }
 
-        public bool Login(Model.User _User)
+        public UserModel Login(Model.UserModel _User)
         {
-            var user = FindUser(_User);
+            var user = FindUser(_User) as tbUser;
             if (user!=null)
             {
-                return true;
+                return new UserModel {
+                    UserName=user.Username,
+                    FullName=user.Fullname,
+                    Role=user.Role
+                };
             }
-            return false;
+            return null;
         }
 
-        private object FindUser(Model.User _User)
+        private object FindUser(Model.UserModel _User)
         {
             var user = dbEntities.tbUsers.SingleOrDefault(n => n.Username.Equals(_User.UserName) && n.Password.Equals(_User.Password));
             return user;
         }
-        public bool Create(Model.User _User)
+        public bool Create(Model.UserModel _User)
         {
             var user = FindUser(_User);
             if (user == null)
             {
-                var userEntry=new tbUsers {
+                var userEntry=new tbUser {
                     Username=_User.UserName,
                     Password=_User.Password,
                     Fullname=_User.FullName,
                     Role=_User.Role
                 };
                 dbEntities.tbUsers.Add(userEntry);
-                dbEntities.SaveChanges();
+                dbEntities.SaveChangesAsync();
                 
                 return true;
             }
             return false;
         }
 
-        public bool Update(Model.User _User)
+        public bool Update(Model.UserModel _User)
         {
             var user = dbEntities.tbUsers.SingleOrDefault(n => n.Username.Equals(_User.UserName));
             if (user!=null)
@@ -62,7 +68,7 @@ namespace QuanLyNhapHang.Responsities
                 user.Fullname = _User.FullName;
                 user.Role = _User.Role.ToString();
                 user.Password = _User.Password;
-                dbEntities.SaveChanges();
+                dbEntities.SaveChangesAsync();
                 return true;
             }
             return false;

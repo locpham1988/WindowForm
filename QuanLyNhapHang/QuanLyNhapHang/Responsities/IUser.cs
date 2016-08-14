@@ -9,8 +9,9 @@ namespace QuanLyNhapHang.Responsities
 {
     public interface IUser
     {
-        bool Login(User User);
-        bool Create(User User);
-        bool Update(User user);
+        UserModel Login(UserModel User);
+        bool Create(UserModel User);
+        bool Update(UserModel user);
+        
     }
 }

@@ -1,3 +1,0 @@
-SELECT        tbMatHang.MaHang, tbMatHang.TenHang, tbNhanHang.Id AS MaNhanHang, tbNhanHang.TenNhanHang, tbMatHang.Created, tbMatHang.Updated
-FROM            tbMatHang INNER JOIN
-                         tbNhanHang ON tbMatHang.MaNhanHang = tbNhanHang.Id

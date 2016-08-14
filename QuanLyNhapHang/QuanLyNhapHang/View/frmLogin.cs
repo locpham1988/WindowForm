@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyNhapHang.Helper;
+using QuanLyNhapHang.Model;
 
 namespace QuanLyNhapHang.View
 {
@@ -30,11 +31,13 @@ namespace QuanLyNhapHang.View
         {
             if (valid()==true)
             {
-                var isLogined = _IUser.Login(new Model.User { UserName = txtUserName.Text.Trim(), Password = txtPassword.Text.Trim().Encrypt() });
-                if (isLogined==true)
+                var userLogin = _IUser.Login(new Model.UserModel { UserName = txtUserName.Text.Trim(), Password = txtPassword.Text.Trim().Encrypt() });
+                if (userLogin!=null)
                 {
                     frmMain main = new frmMain();
                     main.Show();
+                    main.SetUserInfo(userLogin);
+                    
                     this.Hide();
                 }
                 else

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DVTinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDVTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbPhieuNhaps" Relationship="Self.FK_DVTinh_PhieuNhap" FromRole="DVTinh" ToRole="tbPhieuNhap" />
+  </EntityType>
+  <EntityType Name="tbMatHang">
+    <Key>
+      <PropertyRef Name="MaHang" />
+    </Key>
+    <Property Name="MaHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Created" Type="DateTime" Precision="3" />
+    <Property Name="Updated" Type="DateTime" Precision="3" />
+    <Property Name="MaNhanHang" Type="Int32" />
+    <NavigationProperty Name="tbNhanHang" Relationship="Self.FK_tbMatHang_tbNhanHang" FromRole="tbMatHang" ToRole="tbNhanHang" />
+  </EntityType>
+  <EntityType Name="tbNhanHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhanHang" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbMatHangs" Relationship="Self.FK_tbMatHang_tbNhanHang" FromRole="tbNhanHang" ToRole="tbMatHang" />
+  </EntityType>
+  <EntityType Name="tbPhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPhieuNhap" />
+    </Key>
+    <Property Name="MaPhieuNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaMatHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaDVTinh" Type="Int32" />
+    <Property Name="SoLuong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TongHoaDon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+    <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
+    <Property Name="MaNguoiNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GiaNhap" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DVTinh" Relationship="Self.FK_DVTinh_PhieuNhap" FromRole="tbPhieuNhap" ToRole="DVTinh" />
+    <NavigationProperty Name="tbUser" Relationship="Self.FK_Users_PhieuNhap" FromRole="tbPhieuNhap" ToRole="tbUsers" />
+  </EntityType>
+  <EntityType Name="tbUser">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbPhieuNhaps" Relationship="Self.FK_Users_PhieuNhap" FromRole="tbUsers" ToRole="tbPhieuNhap" />
+  </EntityType>
+  <Association Name="FK_DVTinh_PhieuNhap">
+    <End Role="DVTinh" Type="Self.DVTinh" Multiplicity="0..1" />
+    <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DVTinh">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbPhieuNhap">
+        <PropertyRef Name="MaDVTinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbMatHang_tbNhanHang">
+    <End Role="tbNhanHang" Type="Self.tbNhanHang" Multiplicity="0..1" />
+    <End Role="tbMatHang" Type="Self.tbMatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbNhanHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbMatHang">
+        <PropertyRef Name="MaNhanHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_PhieuNhap">
+    <End Role="tbUsers" Type="Self.tbUser" Multiplicity="0..1" />
+    <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsers">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="tbPhieuNhap">
+        <PropertyRef Name="MaNguoiNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLNHEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DVTinhs" EntityType="Self.DVTinh" />
+    <EntitySet Name="tbMatHangs" EntityType="Self.tbMatHang" />
+    <EntitySet Name="tbNhanHangs" EntityType="Self.tbNhanHang" />
+    <EntitySet Name="tbPhieuNhaps" EntityType="Self.tbPhieuNhap" />
+    <EntitySet Name="tbUsers" EntityType="Self.tbUser" />
+    <AssociationSet Name="FK_DVTinh_PhieuNhap" Association="Self.FK_DVTinh_PhieuNhap">
+      <End Role="DVTinh" EntitySet="DVTinhs" />
+      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbMatHang_tbNhanHang" Association="Self.FK_tbMatHang_tbNhanHang">
+      <End Role="tbNhanHang" EntitySet="tbNhanHangs" />
+      <End Role="tbMatHang" EntitySet="tbMatHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_PhieuNhap" Association="Self.FK_Users_PhieuNhap">
+      <End Role="tbUsers" EntitySet="tbUsers" />
+      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhaps" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
