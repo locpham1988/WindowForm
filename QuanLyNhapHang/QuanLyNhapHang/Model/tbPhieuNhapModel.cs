@@ -15,5 +15,15 @@ namespace QuanLyNhapHang.Model
         public DateTime NgayNhap { get; set; }
 
         public DateTime NgayCapNhat { get; set; }
+
+        private List<tbMatHangNhapModel> _DMMatHangNhap;
+
+        public List<tbMatHangNhapModel> DMMatHangNhap
+        {
+            get { return _DMMatHangNhap??new List<tbMatHangNhapModel>(); }
+            set { _DMMatHangNhap = value; }
+        }
+        
     }
 }
+    

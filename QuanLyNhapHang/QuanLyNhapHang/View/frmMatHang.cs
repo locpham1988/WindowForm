@@ -2,12 +2,15 @@
 
 namespace QuanLyNhapHang.View
 {
-    using QuanLyNhapHang.Model;
-    using QuanLyNhapHang.Responsities;
+    using Model;
+    using Responsities;
     using System;
     using System.Linq;
     using System.Windows.Forms;
-    using QuanLyNhapHang.Helper;
+    using Helper;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+
     public partial class frmMatHang : Form
     {
         public frmMatHang()
@@ -84,9 +87,14 @@ namespace QuanLyNhapHang.View
         private void LoadMatHang()
         {
             //tbNhanHangBindingSource.DataSource = dbNhanHangcontext.GetCollection<tbNhanHangModel>();
-            var lstMatHang= dbMatHangcontext.GetCollection<tbMatHangModel>();
+            var lstMatHang= dbMatHangcontext.GetCollection<tbMatHangModel>().OrderByDescending(n => n.Updated).ToList();
             dgvMatHang.AutoGenerateColumns = false;
-            dgvMatHang.DataSource = lstMatHang.OrderByDescending(n => n.Updated).ToList();
+            var datasource = new BindingList<tbMatHangModel>(lstMatHang);
+            
+            datasource.AllowNew = true;
+            datasource.AllowEdit = true;
+            datasource.AllowRemove = true;
+            dgvMatHang.DataSource = datasource;
         }
         private void LoadNhanhang(string selected)
         {
@@ -174,6 +182,38 @@ namespace QuanLyNhapHang.View
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvMatHang_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            var current = e.Row.DataBoundItem as tbMatHangModel;
+            if (current!=null)
+            {
+                var nhanHang = ((List<tbNhanHangModel>)cboNhanHang.DataSource).SingleOrDefault(c => c.ID.Equals(current.MaNhanHang));
+                string question = string.Format("Bạn có muốn xóa sản phẩm (Tên: {0} - Nhãn Hàng: {1})",current.Tenhang,nhanHang.Name);
+                var diaglogrs = MessageBox.Show(question,"Cảnh báo",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+                if (diaglogrs.Equals(DialogResult.OK))
+                {
+                    if (dbMatHangcontext.Delete(current.Mahang))
+                    {
+                        MessageBox.Show("Xóa thành công.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa thất bại.");
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            
+        }
+
+        private void dgvMatHang_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
         }

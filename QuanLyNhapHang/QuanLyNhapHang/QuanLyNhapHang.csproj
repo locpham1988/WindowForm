@@ -61,7 +61,10 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -133,7 +136,7 @@
     <Compile Include="Model\CommonObjectModel.cs" />
     <Compile Include="Model\tbMatHangModel.cs" />
     <Compile Include="Model\tbMatHangNhapModel.cs" />
-    <Compile Include="Model\tbPhieuNhap.cs" />
+    <Compile Include="Model\tbPhieuNhapModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserRoles.cs" />
     <Compile Include="Program.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="Responsities\SearchResponsity.cs" />
     <Compile Include="Responsities\tbMatHangResponsity.cs" />
     <Compile Include="Responsities\tbNhanHangResponsity.cs" />
+    <Compile Include="Responsities\tbPhieuNhapResponsity.cs" />
     <Compile Include="Responsities\UserResponsity.cs" />
     <Compile Include="View\frmBangGia.cs">
       <SubType>Form</SubType>

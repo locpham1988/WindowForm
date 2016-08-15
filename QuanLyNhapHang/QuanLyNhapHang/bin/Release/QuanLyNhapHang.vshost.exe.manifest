@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="QuanLyNhapHang.exe" size="819712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="QuanLyNhapHang.exe" size="825344">
       <assemblyIdentity name="QuanLyNhapHang" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lnne+qJs2RthUAH6odjvia6PtbHGp8+BNkUp1CUNTHo=</dsig:DigestValue>
+        <dsig:DigestValue>HhOEoJQTxAdxQiie8of3Fdtxl5H0z0b8YNhqM//AaXA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

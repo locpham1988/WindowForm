@@ -10,10 +10,14 @@ namespace QuanLyNhapHang.Model
     {
         public string  MaMatHang { get; set; }
 
+        public int MaNhanhang { get; set; }
+
         public int MaDVTinh { get; set; }
 
         public int SoLuong { get; set; }
 
+        public decimal GiaNhap { get; set; }
+        
         public decimal TongTien { get; set; }
     }
 }

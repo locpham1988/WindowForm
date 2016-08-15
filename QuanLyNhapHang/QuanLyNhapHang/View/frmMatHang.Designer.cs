@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dtpNgayTao = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,13 +49,12 @@
             this.lblMaHang = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvMatHang = new System.Windows.Forms.DataGridView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.clnMaHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTenHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNhanHang = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.clnNgayTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNgayCapNhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatHang)).BeginInit();
@@ -88,6 +88,23 @@
             this.groupBox1.Size = new System.Drawing.Size(707, 206);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::QuanLyNhapHang.Properties.Resources.Toolbar;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(505, 159);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 36);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Xóa trắng";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnRefresh
             // 
@@ -215,7 +232,7 @@
             this.btncreateNhanHang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btncreateNhanHang.Image = global::QuanLyNhapHang.Properties.Resources.add;
             this.btncreateNhanHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btncreateNhanHang.Location = new System.Drawing.Point(525, 84);
+            this.btncreateNhanHang.Location = new System.Drawing.Point(455, 84);
             this.btncreateNhanHang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btncreateNhanHang.Name = "btncreateNhanHang";
             this.btncreateNhanHang.Size = new System.Drawing.Size(168, 36);
@@ -231,7 +248,7 @@
             this.cboNhanHang.FormattingEnabled = true;
             this.cboNhanHang.Location = new System.Drawing.Point(118, 86);
             this.cboNhanHang.Name = "cboNhanHang";
-            this.cboNhanHang.Size = new System.Drawing.Size(400, 28);
+            this.cboNhanHang.Size = new System.Drawing.Size(330, 28);
             this.cboNhanHang.TabIndex = 7;
             this.cboNhanHang.ValueMember = "ID";
             // 
@@ -299,7 +316,7 @@
             this.txtMahang.MinimumSize = new System.Drawing.Size(200, 4);
             this.txtMahang.Name = "txtMahang";
             this.txtMahang.ReadOnly = true;
-            this.txtMahang.Size = new System.Drawing.Size(200, 26);
+            this.txtMahang.Size = new System.Drawing.Size(400, 26);
             this.txtMahang.TabIndex = 1;
             // 
             // lblMaHang
@@ -339,31 +356,11 @@
             this.dgvMatHang.Location = new System.Drawing.Point(4, 24);
             this.dgvMatHang.Name = "dgvMatHang";
             this.dgvMatHang.RowTemplate.Height = 30;
+            this.dgvMatHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMatHang.Size = new System.Drawing.Size(699, 165);
             this.dgvMatHang.TabIndex = 0;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::QuanLyNhapHang.Properties.Resources.Toolbar;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(505, 159);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 36);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Xóa trắng";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.dgvMatHang.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvMatHang_DataError);
+            this.dgvMatHang.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvMatHang_UserDeletingRow);
             // 
             // clnMaHang
             // 
@@ -405,6 +402,12 @@
             this.clnNgayCapNhat.Name = "clnNgayCapNhat";
             this.clnNgayCapNhat.ReadOnly = true;
             this.clnNgayCapNhat.Width = 250;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // frmMatHang
             // 

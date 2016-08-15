@@ -291,15 +291,6 @@ namespace QuanLyNhapHang.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT m.MaHang,m.TenHang,m.MaNhanHang,m.Created,m.Updated.
-        /// </summary>
-        internal static string tbBangGia {
-            get {
-                return ResourceManager.GetString("tbBangGia", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Toolbar {
