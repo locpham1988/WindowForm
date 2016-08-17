@@ -3,64 +3,65 @@
   <EntityContainerMapping StorageEntityContainer="QLNHModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="DVTinhs">
       <EntityTypeMapping TypeName="QLNHModel.DVTinh">
-        <MappingFragment StoreEntitySet="DVTinh">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+        <MappingFragment StoreEntitySet="DVTinhs">
           <ScalarProperty Name="TenDVTinh" ColumnName="TenDVTinh" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbDMPhieuNhaps">
       <EntityTypeMapping TypeName="QLNHModel.tbDMPhieuNhap">
-        <MappingFragment StoreEntitySet="tbDMPhieuNhap">
-          <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
-          <ScalarProperty Name="TongHoaDon" ColumnName="TongHoaDon" />
-          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+        <MappingFragment StoreEntitySet="tbDMPhieuNhaps">
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="TongHoaDon" ColumnName="TongHoaDon" />
+          <ScalarProperty Name="MaDMPhieuNhap" ColumnName="MaDMPhieuNhap" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbMatHangs">
       <EntityTypeMapping TypeName="QLNHModel.tbMatHang">
-        <MappingFragment StoreEntitySet="tbMatHang">
-          <ScalarProperty Name="MaHang" ColumnName="MaHang" />
-          <ScalarProperty Name="TenHang" ColumnName="TenHang" />
-          <ScalarProperty Name="Created" ColumnName="Created" />
-          <ScalarProperty Name="Updated" ColumnName="Updated" />
+        <MappingFragment StoreEntitySet="tbMatHangs">
           <ScalarProperty Name="MaNhanHang" ColumnName="MaNhanHang" />
+          <ScalarProperty Name="Updated" ColumnName="Updated" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+          <ScalarProperty Name="MaHang" ColumnName="MaHang" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbNhanHangs">
       <EntityTypeMapping TypeName="QLNHModel.tbNhanHang">
-        <MappingFragment StoreEntitySet="tbNhanHang">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+        <MappingFragment StoreEntitySet="tbNhanHangs">
           <ScalarProperty Name="TenNhanHang" ColumnName="TenNhanHang" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbPhieuNhaps">
       <EntityTypeMapping TypeName="QLNHModel.tbPhieuNhap">
-        <MappingFragment StoreEntitySet="tbPhieuNhap">
-          <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
-          <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
-          <ScalarProperty Name="MaDVTinh" ColumnName="MaDVTinh" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="TongHoaDon" ColumnName="TongHoaDon" />
-          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-          <ScalarProperty Name="MaNguoiNhap" ColumnName="MaNguoiNhap" />
+        <MappingFragment StoreEntitySet="tbPhieuNhaps">
+          <ScalarProperty Name="MaDMPhieuNhap" ColumnName="MaDMPhieuNhap" />
           <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+          <ScalarProperty Name="MaNguoiNhap" ColumnName="MaNguoiNhap" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="TongHoaDon" ColumnName="TongHoaDon" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="MaDVTinh" ColumnName="MaDVTinh" />
+          <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+          <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbUsers">
       <EntityTypeMapping TypeName="QLNHModel.tbUser">
         <MappingFragment StoreEntitySet="tbUsers">
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
           <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -25,7 +25,7 @@ namespace QuanLyNhapHang.Responsities
             {
                 var insertModel = value as tbPhieuNhapModel;
 
-                var phieunhap = new tbDMPhieuNhap { MaPhieuNhap = Guid.NewGuid().ToString(), NgayNhap = DateTime.Now, NgayCapNhat = DateTime.Now };
+                var phieunhap = new tbDMPhieuNhap { MaDMPhieuNhap = Guid.NewGuid().ToString(), NgayNhap = DateTime.Now, NgayCapNhat = DateTime.Now };
                 
                 entites.SaveChanges();
                 

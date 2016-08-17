@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QLNHModel.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="DVTinh">
+  <EntityType Name="DVTinhs">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenDVTinh" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <EntityType Name="tbDMPhieuNhap">
+  <EntityType Name="tbDMPhieuNhaps">
     <Key>
-      <PropertyRef Name="MaPhieuNhap" />
+      <PropertyRef Name="MaDMPhieuNhap" />
     </Key>
-    <Property Name="MaPhieuNhap" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MaDMPhieuNhap" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="TongHoaDon" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="NgayNhap" Type="datetime" />
     <Property Name="NgayCapNhat" Type="datetime" />
     <Property Name="MoTa" Type="ntext" />
   </EntityType>
-  <EntityType Name="tbMatHang">
+  <EntityType Name="tbMatHangs">
     <Key>
       <PropertyRef Name="MaHang" />
     </Key>
@@ -27,14 +27,14 @@
     <Property Name="Updated" Type="datetime" />
     <Property Name="MaNhanHang" Type="int" />
   </EntityType>
-  <EntityType Name="tbNhanHang">
+  <EntityType Name="tbNhanHangs">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenNhanHang" Type="nvarchar" MaxLength="300" Nullable="false" />
   </EntityType>
-  <EntityType Name="tbPhieuNhap">
+  <EntityType Name="tbPhieuNhaps">
     <Key>
       <PropertyRef Name="MaPhieuNhap" />
     </Key>
@@ -47,6 +47,7 @@
     <Property Name="NgayCapNhat" Type="datetime" />
     <Property Name="MaNguoiNhap" Type="nvarchar" MaxLength="100" />
     <Property Name="GiaNhap" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MaDMPhieuNhap" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="tbUsers">
     <Key>
@@ -57,92 +58,92 @@
     <Property Name="Role" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Fullname" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK_DMPhieuNhap_PhieuNhap">
-    <End Role="tbDMPhieuNhap" Type="Self.tbDMPhieuNhap" Multiplicity="1" />
-    <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="0..1" />
+  <Association Name="FK_DMPhieuNhap">
+    <End Role="tbDMPhieuNhaps" Type="Self.tbDMPhieuNhaps" Multiplicity="1" />
+    <End Role="tbPhieuNhaps" Type="Self.tbPhieuNhaps" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbDMPhieuNhap">
-        <PropertyRef Name="MaPhieuNhap" />
+      <Principal Role="tbDMPhieuNhaps">
+        <PropertyRef Name="MaDMPhieuNhap" />
       </Principal>
-      <Dependent Role="tbPhieuNhap">
-        <PropertyRef Name="MaPhieuNhap" />
+      <Dependent Role="tbPhieuNhaps">
+        <PropertyRef Name="MaDMPhieuNhap" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DVTinh_PhieuNhap">
-    <End Role="DVTinh" Type="Self.DVTinh" Multiplicity="0..1" />
-    <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+    <End Role="DVTinhs" Type="Self.DVTinhs" Multiplicity="0..1" />
+    <End Role="tbPhieuNhaps" Type="Self.tbPhieuNhaps" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DVTinh">
+      <Principal Role="DVTinhs">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="tbPhieuNhap">
+      <Dependent Role="tbPhieuNhaps">
         <PropertyRef Name="MaDVTinh" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tbMatHang_tbNhanHang">
-    <End Role="tbNhanHang" Type="Self.tbNhanHang" Multiplicity="0..1" />
-    <End Role="tbMatHang" Type="Self.tbMatHang" Multiplicity="*" />
+    <End Role="tbNhanHangs" Type="Self.tbNhanHangs" Multiplicity="0..1" />
+    <End Role="tbMatHangs" Type="Self.tbMatHangs" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbNhanHang">
+      <Principal Role="tbNhanHangs">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="tbMatHang">
+      <Dependent Role="tbMatHangs">
         <PropertyRef Name="MaNhanHang" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tbMatHang_tbPhieuNhap">
-    <End Role="tbMatHang" Type="Self.tbMatHang" Multiplicity="0..1" />
-    <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+    <End Role="tbMatHangs" Type="Self.tbMatHangs" Multiplicity="0..1" />
+    <End Role="tbPhieuNhaps" Type="Self.tbPhieuNhaps" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbMatHang">
+      <Principal Role="tbMatHangs">
         <PropertyRef Name="MaHang" />
       </Principal>
-      <Dependent Role="tbPhieuNhap">
+      <Dependent Role="tbPhieuNhaps">
         <PropertyRef Name="MaMatHang" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Users_PhieuNhap">
     <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
-    <End Role="tbPhieuNhap" Type="Self.tbPhieuNhap" Multiplicity="*" />
+    <End Role="tbPhieuNhaps" Type="Self.tbPhieuNhaps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbUsers">
         <PropertyRef Name="Username" />
       </Principal>
-      <Dependent Role="tbPhieuNhap">
+      <Dependent Role="tbPhieuNhaps">
         <PropertyRef Name="MaNguoiNhap" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="QLNHModelStoreContainer">
-    <EntitySet Name="DVTinh" EntityType="Self.DVTinh" store:Type="Tables" />
-    <EntitySet Name="tbDMPhieuNhap" EntityType="Self.tbDMPhieuNhap" store:Type="Tables" />
-    <EntitySet Name="tbMatHang" EntityType="Self.tbMatHang" store:Type="Tables" />
-    <EntitySet Name="tbNhanHang" EntityType="Self.tbNhanHang" store:Type="Tables" />
-    <EntitySet Name="tbPhieuNhap" EntityType="Self.tbPhieuNhap" store:Type="Tables" />
+    <EntitySet Name="DVTinhs" EntityType="Self.DVTinhs" store:Type="Tables" />
+    <EntitySet Name="tbDMPhieuNhaps" EntityType="Self.tbDMPhieuNhaps" store:Type="Tables" />
+    <EntitySet Name="tbMatHangs" EntityType="Self.tbMatHangs" store:Type="Tables" />
+    <EntitySet Name="tbNhanHangs" EntityType="Self.tbNhanHangs" store:Type="Tables" />
+    <EntitySet Name="tbPhieuNhaps" EntityType="Self.tbPhieuNhaps" store:Type="Tables" />
     <EntitySet Name="tbUsers" EntityType="Self.tbUsers" store:Type="Tables" />
-    <AssociationSet Name="FK_DMPhieuNhap_PhieuNhap" Association="Self.FK_DMPhieuNhap_PhieuNhap">
-      <End Role="tbDMPhieuNhap" EntitySet="tbDMPhieuNhap" />
-      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+    <AssociationSet Name="FK_DMPhieuNhap" Association="Self.FK_DMPhieuNhap">
+      <End Role="tbDMPhieuNhaps" EntitySet="tbDMPhieuNhaps" />
+      <End Role="tbPhieuNhaps" EntitySet="tbPhieuNhaps" />
     </AssociationSet>
     <AssociationSet Name="FK_DVTinh_PhieuNhap" Association="Self.FK_DVTinh_PhieuNhap">
-      <End Role="DVTinh" EntitySet="DVTinh" />
-      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+      <End Role="DVTinhs" EntitySet="DVTinhs" />
+      <End Role="tbPhieuNhaps" EntitySet="tbPhieuNhaps" />
     </AssociationSet>
     <AssociationSet Name="FK_tbMatHang_tbNhanHang" Association="Self.FK_tbMatHang_tbNhanHang">
-      <End Role="tbNhanHang" EntitySet="tbNhanHang" />
-      <End Role="tbMatHang" EntitySet="tbMatHang" />
+      <End Role="tbNhanHangs" EntitySet="tbNhanHangs" />
+      <End Role="tbMatHangs" EntitySet="tbMatHangs" />
     </AssociationSet>
     <AssociationSet Name="FK_tbMatHang_tbPhieuNhap" Association="Self.FK_tbMatHang_tbPhieuNhap">
-      <End Role="tbMatHang" EntitySet="tbMatHang" />
-      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+      <End Role="tbMatHangs" EntitySet="tbMatHangs" />
+      <End Role="tbPhieuNhaps" EntitySet="tbPhieuNhaps" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_PhieuNhap" Association="Self.FK_Users_PhieuNhap">
       <End Role="tbUsers" EntitySet="tbUsers" />
-      <End Role="tbPhieuNhap" EntitySet="tbPhieuNhap" />
+      <End Role="tbPhieuNhaps" EntitySet="tbPhieuNhaps" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
