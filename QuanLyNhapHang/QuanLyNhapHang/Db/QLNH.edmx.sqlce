@@ -1,0 +1,228 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 08/18/2016 00:47:23
+-- Generated from EDMX file: E:\Working\WindowForm\QuanLyNhapHang\QuanLyNhapHang\Db\QLNH.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    ALTER TABLE [tbPhieuNhap] DROP CONSTRAINT [FK_DMPhieuNhap_PhieuNhap];
+GO
+    ALTER TABLE [tbPhieuNhap] DROP CONSTRAINT [FK_DVTinh_PhieuNhap];
+GO
+    ALTER TABLE [tbMatHang] DROP CONSTRAINT [FK_tbMatHang_tbNhanHang];
+GO
+    ALTER TABLE [tbPhieuNhap] DROP CONSTRAINT [FK_tbMatHang_tbPhieuNhap];
+GO
+    ALTER TABLE [tbPhieuNhap] DROP CONSTRAINT [FK_Users_PhieuNhap];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [DVTinh];
+GO
+    DROP TABLE [tbDMPhieuNhap];
+GO
+    DROP TABLE [tbMatHang];
+GO
+    DROP TABLE [tbNhanHang];
+GO
+    DROP TABLE [tbPhieuNhap];
+GO
+    DROP TABLE [tbUsers];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'DVTinhs'
+CREATE TABLE [DVTinhs] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [TenDVTinh] nvarchar(100)  NOT NULL
+);
+GO
+
+-- Creating table 'tbDMPhieuNhaps'
+CREATE TABLE [tbDMPhieuNhaps] (
+    [MaDMPhieuNhap] nvarchar(100)  NOT NULL,
+    [TongHoaDon] nvarchar(100)  NOT NULL,
+    [NgayNhap] datetime  NULL,
+    [NgayCapNhat] datetime  NULL,
+    [MoTa] ntext  NULL
+);
+GO
+
+-- Creating table 'tbMatHangs'
+CREATE TABLE [tbMatHangs] (
+    [MaHang] nvarchar(100)  NOT NULL,
+    [TenHang] nvarchar(100)  NULL,
+    [Created] datetime  NULL,
+    [Updated] datetime  NULL,
+    [MaNhanHang] int  NULL
+);
+GO
+
+-- Creating table 'tbNhanHangs'
+CREATE TABLE [tbNhanHangs] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [TenNhanHang] nvarchar(300)  NOT NULL
+);
+GO
+
+-- Creating table 'tbPhieuNhaps'
+CREATE TABLE [tbPhieuNhaps] (
+    [MaPhieuNhap] nvarchar(100)  NOT NULL,
+    [MaMatHang] nvarchar(100)  NULL,
+    [MaDVTinh] int  NULL,
+    [SoLuong] nvarchar(100)  NULL,
+    [TongHoaDon] nvarchar(100)  NULL,
+    [NgayNhap] datetime  NULL,
+    [NgayCapNhat] datetime  NULL,
+    [MaNguoiNhap] nvarchar(100)  NULL,
+    [GiaNhap] decimal(18,0)  NOT NULL,
+    [MaDMPhieuNhap] nvarchar(4000)  NOT NULL,
+    [tbDMPhieuNhapMaDMPhieuNhap] nvarchar(100)  NOT NULL
+);
+GO
+
+-- Creating table 'tbUsers'
+CREATE TABLE [tbUsers] (
+    [Username] nvarchar(100)  NOT NULL,
+    [Password] nvarchar(100)  NOT NULL,
+    [Role] nvarchar(100)  NOT NULL,
+    [Fullname] nvarchar(100)  NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'DVTinhs'
+ALTER TABLE [DVTinhs]
+ADD CONSTRAINT [PK_DVTinhs]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [MaDMPhieuNhap] in table 'tbDMPhieuNhaps'
+ALTER TABLE [tbDMPhieuNhaps]
+ADD CONSTRAINT [PK_tbDMPhieuNhaps]
+    PRIMARY KEY ([MaDMPhieuNhap] );
+GO
+
+-- Creating primary key on [MaHang] in table 'tbMatHangs'
+ALTER TABLE [tbMatHangs]
+ADD CONSTRAINT [PK_tbMatHangs]
+    PRIMARY KEY ([MaHang] );
+GO
+
+-- Creating primary key on [Id] in table 'tbNhanHangs'
+ALTER TABLE [tbNhanHangs]
+ADD CONSTRAINT [PK_tbNhanHangs]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [MaPhieuNhap] in table 'tbPhieuNhaps'
+ALTER TABLE [tbPhieuNhaps]
+ADD CONSTRAINT [PK_tbPhieuNhaps]
+    PRIMARY KEY ([MaPhieuNhap] );
+GO
+
+-- Creating primary key on [Username] in table 'tbUsers'
+ALTER TABLE [tbUsers]
+ADD CONSTRAINT [PK_tbUsers]
+    PRIMARY KEY ([Username] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [MaDVTinh] in table 'tbPhieuNhaps'
+ALTER TABLE [tbPhieuNhaps]
+ADD CONSTRAINT [FK_DVTinh_PhieuNhap]
+    FOREIGN KEY ([MaDVTinh])
+    REFERENCES [DVTinhs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DVTinh_PhieuNhap'
+CREATE INDEX [IX_FK_DVTinh_PhieuNhap]
+ON [tbPhieuNhaps]
+    ([MaDVTinh]);
+GO
+
+-- Creating foreign key on [MaNhanHang] in table 'tbMatHangs'
+ALTER TABLE [tbMatHangs]
+ADD CONSTRAINT [FK_tbMatHang_tbNhanHang]
+    FOREIGN KEY ([MaNhanHang])
+    REFERENCES [tbNhanHangs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_tbMatHang_tbNhanHang'
+CREATE INDEX [IX_FK_tbMatHang_tbNhanHang]
+ON [tbMatHangs]
+    ([MaNhanHang]);
+GO
+
+-- Creating foreign key on [MaMatHang] in table 'tbPhieuNhaps'
+ALTER TABLE [tbPhieuNhaps]
+ADD CONSTRAINT [FK_tbMatHang_tbPhieuNhap]
+    FOREIGN KEY ([MaMatHang])
+    REFERENCES [tbMatHangs]
+        ([MaHang])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_tbMatHang_tbPhieuNhap'
+CREATE INDEX [IX_FK_tbMatHang_tbPhieuNhap]
+ON [tbPhieuNhaps]
+    ([MaMatHang]);
+GO
+
+-- Creating foreign key on [MaNguoiNhap] in table 'tbPhieuNhaps'
+ALTER TABLE [tbPhieuNhaps]
+ADD CONSTRAINT [FK_Users_PhieuNhap]
+    FOREIGN KEY ([MaNguoiNhap])
+    REFERENCES [tbUsers]
+        ([Username])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Users_PhieuNhap'
+CREATE INDEX [IX_FK_Users_PhieuNhap]
+ON [tbPhieuNhaps]
+    ([MaNguoiNhap]);
+GO
+
+-- Creating foreign key on [tbDMPhieuNhapMaDMPhieuNhap] in table 'tbPhieuNhaps'
+ALTER TABLE [tbPhieuNhaps]
+ADD CONSTRAINT [FK_tbDMPhieuNhaptbPhieuNhap]
+    FOREIGN KEY ([tbDMPhieuNhapMaDMPhieuNhap])
+    REFERENCES [tbDMPhieuNhaps]
+        ([MaDMPhieuNhap])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_tbDMPhieuNhaptbPhieuNhap'
+CREATE INDEX [IX_FK_tbDMPhieuNhaptbPhieuNhap]
+ON [tbPhieuNhaps]
+    ([tbDMPhieuNhapMaDMPhieuNhap]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------

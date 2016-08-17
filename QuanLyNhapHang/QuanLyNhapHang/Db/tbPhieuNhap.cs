@@ -23,6 +23,7 @@ namespace QuanLyNhapHang.Db
         public Nullable<System.DateTime> NgayCapNhat { get; set; }
         public string MaNguoiNhap { get; set; }
         public decimal GiaNhap { get; set; }
+        public string MaDMPhieuNhap { get; set; }
     
         public virtual DVTinh DVTinh { get; set; }
         public virtual tbDMPhieuNhap tbDMPhieuNhap { get; set; }

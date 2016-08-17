@@ -12,7 +12,7 @@ namespace QuanLyNhapHang.Db
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class QLNHEntities : DbContext
     {
         public QLNHEntities()

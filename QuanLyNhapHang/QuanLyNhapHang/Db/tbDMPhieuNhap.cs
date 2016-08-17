@@ -14,12 +14,19 @@ namespace QuanLyNhapHang.Db
     
     public partial class tbDMPhieuNhap
     {
-        public string MaPhieuNhap { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbDMPhieuNhap()
+        {
+            this.tbPhieuNhaps = new HashSet<tbPhieuNhap>();
+        }
+    
+        public string MaDMPhieuNhap { get; set; }
         public string TongHoaDon { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public Nullable<System.DateTime> NgayCapNhat { get; set; }
         public string MoTa { get; set; }
     
-        public virtual tbPhieuNhap tbPhieuNhap { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbPhieuNhap> tbPhieuNhaps { get; set; }
     }
 }

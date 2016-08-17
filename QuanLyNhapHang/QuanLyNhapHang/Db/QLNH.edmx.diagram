@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1ddf944a5bcd48b8a28262cbb0b16829" Name="Diagram1">
-        <EntityTypeShape EntityType="QLNHModel.DVTinh" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLNHModel.tbDMPhieuNhap" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLNHModel.tbMatHang" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLNHModel.tbNhanHang" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLNHModel.tbPhieuNhap" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLNHModel.tbUser" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
-        <AssociationConnector Association="QLNHModel.FK_DVTinh_PhieuNhap" ManuallyRouted="false" />
-        <AssociationConnector Association="QLNHModel.FK_DMPhieuNhap_PhieuNhap" ManuallyRouted="false" />
-        <AssociationConnector Association="QLNHModel.FK_tbMatHang_tbNhanHang" ManuallyRouted="false" />
-        <AssociationConnector Association="QLNHModel.FK_tbMatHang_tbPhieuNhap" ManuallyRouted="false" />
-        <AssociationConnector Association="QLNHModel.FK_Users_PhieuNhap" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLNHModel.DVTinh" Width="1.5" PointX="3" PointY="11.25" />
+        <EntityTypeShape EntityType="QLNHModel.tbDMPhieuNhap" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="QLNHModel.tbMatHang" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="QLNHModel.tbNhanHang" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="QLNHModel.tbPhieuNhap" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="QLNHModel.tbUser" Width="1.5" PointX="3" PointY="5.625" />
+        <AssociationConnector Association="QLNHModel.FK_DVTinh_PhieuNhap" />
+        <AssociationConnector Association="QLNHModel.FK_DMPhieuNhap" />
+        <AssociationConnector Association="QLNHModel.FK_tbMatHang_tbNhanHang" />
+        <AssociationConnector Association="QLNHModel.FK_tbMatHang_tbPhieuNhap" />
+        <AssociationConnector Association="QLNHModel.FK_Users_PhieuNhap" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

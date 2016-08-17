@@ -262,6 +262,7 @@
     <None Include="Db\QLNH.edmx.diagram">
       <DependentUpon>QLNH.edmx</DependentUpon>
     </None>
+    <None Include="Db\QLNH.edmx.sqlce" />
     <None Include="Db\QLNH.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLNH.edmx</DependentUpon>
