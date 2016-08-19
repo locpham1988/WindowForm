@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dgvtxtNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtTongHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDMPhieuNhap = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -51,17 +49,19 @@
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvMatHang = new System.Windows.Forms.DataGridView();
-            this.dgvtxtMatHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnNhanHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcboDVTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
+            this.dgvtxtNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtTongHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtMatHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnNhanHang = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvtxtSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcboDVTinh = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvtxtThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDMPhieuNhap)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -70,7 +70,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgvDMPhieuNhap);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -79,33 +79,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DM Phiếu Nhập";
             // 
-            // dataGridView1
+            // dgvDMPhieuNhap
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDMPhieuNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDMPhieuNhap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvtxtNgayNhap,
             this.dgvtxtTongHoaDon});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(341, 636);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // dgvtxtNgayNhap
-            // 
-            this.dgvtxtNgayNhap.HeaderText = "Ngày Nhập";
-            this.dgvtxtNgayNhap.MinimumWidth = 150;
-            this.dgvtxtNgayNhap.Name = "dgvtxtNgayNhap";
-            this.dgvtxtNgayNhap.ReadOnly = true;
-            this.dgvtxtNgayNhap.Width = 150;
-            // 
-            // dgvtxtTongHoaDon
-            // 
-            this.dgvtxtTongHoaDon.HeaderText = "Tổng Tiền";
-            this.dgvtxtTongHoaDon.MinimumWidth = 200;
-            this.dgvtxtTongHoaDon.Name = "dgvtxtTongHoaDon";
-            this.dgvtxtTongHoaDon.ReadOnly = true;
-            this.dgvtxtTongHoaDon.Width = 200;
+            this.dgvDMPhieuNhap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDMPhieuNhap.Location = new System.Drawing.Point(3, 22);
+            this.dgvDMPhieuNhap.Name = "dgvDMPhieuNhap";
+            this.dgvDMPhieuNhap.Size = new System.Drawing.Size(341, 636);
+            this.dgvDMPhieuNhap.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -303,6 +287,7 @@
             this.btnCapNhat.Text = "Chỉnh sửa";
             this.btnCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // groupBox4
             // 
@@ -332,49 +317,6 @@
             this.dgvMatHang.RowTemplate.Height = 30;
             this.dgvMatHang.Size = new System.Drawing.Size(636, 401);
             this.dgvMatHang.TabIndex = 1;
-            // 
-            // dgvtxtMatHang
-            // 
-            this.dgvtxtMatHang.HeaderText = "Mặt hàng";
-            this.dgvtxtMatHang.MinimumWidth = 150;
-            this.dgvtxtMatHang.Name = "dgvtxtMatHang";
-            this.dgvtxtMatHang.ReadOnly = true;
-            this.dgvtxtMatHang.Width = 150;
-            // 
-            // clnNhanHang
-            // 
-            this.clnNhanHang.DataPropertyName = "MaNhanHang";
-            this.clnNhanHang.HeaderText = "Nhãn hàng";
-            this.clnNhanHang.MinimumWidth = 150;
-            this.clnNhanHang.Name = "clnNhanHang";
-            this.clnNhanHang.ReadOnly = true;
-            this.clnNhanHang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clnNhanHang.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clnNhanHang.Width = 150;
-            // 
-            // dgvtxtSoLuong
-            // 
-            this.dgvtxtSoLuong.HeaderText = "Số Lượng";
-            this.dgvtxtSoLuong.MinimumWidth = 150;
-            this.dgvtxtSoLuong.Name = "dgvtxtSoLuong";
-            this.dgvtxtSoLuong.ReadOnly = true;
-            this.dgvtxtSoLuong.Width = 150;
-            // 
-            // dgvcboDVTinh
-            // 
-            this.dgvcboDVTinh.HeaderText = "Đ/V Tính";
-            this.dgvcboDVTinh.Name = "dgvcboDVTinh";
-            this.dgvcboDVTinh.ReadOnly = true;
-            this.dgvcboDVTinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvcboDVTinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtThanhTien
-            // 
-            this.dgvtxtThanhTien.HeaderText = "Thành tiền";
-            this.dgvtxtThanhTien.MinimumWidth = 150;
-            this.dgvtxtThanhTien.Name = "dgvtxtThanhTien";
-            this.dgvtxtThanhTien.ReadOnly = true;
-            this.dgvtxtThanhTien.Width = 150;
             // 
             // textBox1
             // 
@@ -411,6 +353,65 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "Ngày Nhập";
             // 
+            // dgvtxtNgayNhap
+            // 
+            this.dgvtxtNgayNhap.DataPropertyName = "NgayNhap";
+            this.dgvtxtNgayNhap.HeaderText = "Ngày Nhập";
+            this.dgvtxtNgayNhap.MinimumWidth = 150;
+            this.dgvtxtNgayNhap.Name = "dgvtxtNgayNhap";
+            this.dgvtxtNgayNhap.ReadOnly = true;
+            this.dgvtxtNgayNhap.Width = 150;
+            // 
+            // dgvtxtTongHoaDon
+            // 
+            this.dgvtxtTongHoaDon.DataPropertyName = "TongHoaDon";
+            this.dgvtxtTongHoaDon.HeaderText = "Tổng Tiền";
+            this.dgvtxtTongHoaDon.MinimumWidth = 200;
+            this.dgvtxtTongHoaDon.Name = "dgvtxtTongHoaDon";
+            this.dgvtxtTongHoaDon.ReadOnly = true;
+            this.dgvtxtTongHoaDon.Width = 200;
+            // 
+            // dgvtxtMatHang
+            // 
+            this.dgvtxtMatHang.HeaderText = "Mặt hàng";
+            this.dgvtxtMatHang.MinimumWidth = 150;
+            this.dgvtxtMatHang.Name = "dgvtxtMatHang";
+            this.dgvtxtMatHang.ReadOnly = true;
+            this.dgvtxtMatHang.Width = 150;
+            // 
+            // clnNhanHang
+            // 
+            this.clnNhanHang.DataPropertyName = "MaNhanHang";
+            this.clnNhanHang.HeaderText = "Nhãn hàng";
+            this.clnNhanHang.MinimumWidth = 150;
+            this.clnNhanHang.Name = "clnNhanHang";
+            this.clnNhanHang.ReadOnly = true;
+            this.clnNhanHang.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clnNhanHang.Width = 150;
+            // 
+            // dgvtxtSoLuong
+            // 
+            this.dgvtxtSoLuong.HeaderText = "Số Lượng";
+            this.dgvtxtSoLuong.MinimumWidth = 150;
+            this.dgvtxtSoLuong.Name = "dgvtxtSoLuong";
+            this.dgvtxtSoLuong.ReadOnly = true;
+            this.dgvtxtSoLuong.Width = 150;
+            // 
+            // dgvcboDVTinh
+            // 
+            this.dgvcboDVTinh.HeaderText = "Đ/V Tính";
+            this.dgvcboDVTinh.Name = "dgvcboDVTinh";
+            this.dgvcboDVTinh.ReadOnly = true;
+            this.dgvcboDVTinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dgvtxtThanhTien
+            // 
+            this.dgvtxtThanhTien.HeaderText = "Thành tiền";
+            this.dgvtxtThanhTien.MinimumWidth = 150;
+            this.dgvtxtThanhTien.Name = "dgvtxtThanhTien";
+            this.dgvtxtThanhTien.ReadOnly = true;
+            this.dgvtxtThanhTien.Width = 150;
+            // 
             // frmPhieuNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -426,8 +427,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmPhieuNhap";
             this.Text = "Hóa đơn nhập hàng";
+            this.Load += new System.EventHandler(this.frmPhieuNhap_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDMPhieuNhap)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -441,9 +443,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtNgayNhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtTongHoaDon;
+        private System.Windows.Forms.DataGridView dgvDMPhieuNhap;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboDVTinh;
@@ -465,12 +465,14 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvMatHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtMatHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnNhanHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSoLuong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcboDVTinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtThanhTien;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtNgayNhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtTongHoaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtMatHang;
+        private System.Windows.Forms.DataGridViewComboBoxColumn clnNhanHang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSoLuong;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dgvcboDVTinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtThanhTien;
     }
 }

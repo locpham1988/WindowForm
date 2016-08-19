@@ -56,7 +56,6 @@ namespace QuanLyNhapHang.View
                     FullName = this.txtFullName.Text.Trim(),
                     Role=this.cboLoaiNguoiDung.SelectedValue.ToString()
                 });
-                new frmLogin().Show();
             }
             else
             {

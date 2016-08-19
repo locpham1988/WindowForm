@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboNhanHang = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGiaNhap = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnTaoMoi = new System.Windows.Forms.Button();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDMMatHang = new System.Windows.Forms.DataGridView();
-            this.cboNhanHang = new System.Windows.Forms.ComboBox();
             this.dgvcboMatHang = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcboNhanHang = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcboDVTinh = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -61,7 +61,7 @@
             // 
             this.groupBox1.Controls.Add(this.cboNhanHang);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtGiaNhap);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnTaoMoi);
             this.groupBox1.Controls.Add(this.txtSoLuong);
@@ -81,6 +81,15 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
+            // cboNhanHang
+            // 
+            this.cboNhanHang.FormattingEnabled = true;
+            this.cboNhanHang.Location = new System.Drawing.Point(99, 17);
+            this.cboNhanHang.Name = "cboNhanHang";
+            this.cboNhanHang.Size = new System.Drawing.Size(211, 28);
+            this.cboNhanHang.TabIndex = 41;
+            this.cboNhanHang.SelectedIndexChanged += new System.EventHandler(this.cboNhanHang_SelectedIndexChanged);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -90,12 +99,13 @@
             this.label6.TabIndex = 40;
             this.label6.Text = "Nhãn hàng";
             // 
-            // textBox1
+            // txtGiaNhap
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(211, 26);
-            this.textBox1.TabIndex = 39;
+            this.txtGiaNhap.Location = new System.Drawing.Point(99, 51);
+            this.txtGiaNhap.Name = "txtGiaNhap";
+            this.txtGiaNhap.Size = new System.Drawing.Size(211, 26);
+            this.txtGiaNhap.TabIndex = 39;
+            this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // label2
             // 
@@ -212,7 +222,7 @@
             this.btnSave.Text = "Lưu";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dtpsNgayNhap
             // 
@@ -262,15 +272,6 @@
             this.dgvDMMatHang.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDMMatHang_CellValueChanged);
             this.dgvDMMatHang.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvDMMatHang_CurrentCellDirtyStateChanged);
             this.dgvDMMatHang.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDMMatHang_DataError);
-            // 
-            // cboNhanHang
-            // 
-            this.cboNhanHang.FormattingEnabled = true;
-            this.cboNhanHang.Location = new System.Drawing.Point(99, 17);
-            this.cboNhanHang.Name = "cboNhanHang";
-            this.cboNhanHang.Size = new System.Drawing.Size(211, 28);
-            this.cboNhanHang.TabIndex = 41;
-            this.cboNhanHang.SelectedIndexChanged += new System.EventHandler(this.cboNhanHang_SelectedIndexChanged);
             // 
             // dgvcboMatHang
             // 
@@ -353,7 +354,7 @@
         private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnTaoMoi;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGiaNhap;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboNhanHang;

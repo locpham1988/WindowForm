@@ -30,7 +30,7 @@ namespace QuanLyNhapHang.Responsities
                 if (_DVTinh != null)
                 {
                     entites.DVTinhs.Add(new DVTinh { TenDVTinh = _DVTinh.Name });
-                    var a = entites.SaveChangesAsync();
+                    entites.SaveChanges();
 
                 }
                 else

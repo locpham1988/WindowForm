@@ -37,12 +37,8 @@ namespace QuanLyNhapHang.View
                     frmMain main = new frmMain();
                     main.Show();
                     main.SetUserInfo(userLogin);
-                    
+                    GlobalContent.CurrentUser = userLogin.UserName;
                     this.Hide();
-                }
-                else
-                {
-                    new frmUser().Show(); 
                 }
             }
             else

@@ -16,12 +16,14 @@ namespace QuanLyNhapHang.View
         private IDBActionContext dbMatHangcontext;
         private IDBActionContext dbDVTinhcontext;
         private IDBActionContext dbNhanHangcontext;
+        private IDBActionContext dbDMPhieuNhapcontext;
         public frmTaoPhieuNhap()
         {
             InitializeComponent();
             dbMatHangcontext = new tbMatHangResponsity();
             dbDVTinhcontext = new DVTinhResponsity();
             dbNhanHangcontext = new tbNhanHangResponsity();
+            dbDMPhieuNhapcontext = new tbPhieuNhapResponsity();
             dgvDMMatHang.AutoGenerateColumns = false;
             dtpsNgayNhap.Value = DateTime.Now;
         }
@@ -29,6 +31,7 @@ namespace QuanLyNhapHang.View
         {
             //tbNhanHangBindingSource.DataSource = dbNhanHangcontext.GetCollection<tbNhanHangModel>();
             var lstMatHang = dbMatHangcontext.GetCollection<tbMatHangModel>().OrderByDescending(n => n.Updated).ToList();
+            lstMatHang.Insert(0, new tbMatHangModel { Mahang = "", Tenhang= "Chọn mặt hàng" });
             cboMatHang.DataSource = lstMatHang;
             cboMatHang.DisplayMember = "Tenhang";
             cboMatHang.ValueMember = "Mahang";
@@ -78,14 +81,38 @@ namespace QuanLyNhapHang.View
 
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTaoMoi_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cboMatHang.SelectedValue.ToString()))
+            {
+                MessageBox.Show("Vui lòng chọn mặt hàng.");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtGiaNhap.Text) || txtGiaNhap.Text=="0" || txtGiaNhap.Text.StartsWith("-"))
+            {
+                MessageBox.Show("Vui lòng nhập giá nhập.");
+                return;
+            }
+            if (string.IsNullOrEmpty(cboDVTinh.SelectedValue.ToString()))
+            {
+                MessageBox.Show("Vui lòng chọn đơn vị tính.");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtSoLuong.Text) || txtSoLuong.Text == "0" || txtSoLuong.Text.StartsWith("-"))
+            {
+                MessageBox.Show("Vui lòng nhập số lượng.");
+                return;
+            }
 
+            dmMatHangNhap.Add(new tbMatHangNhapModel
+            {
+                GiaNhap=decimal.Parse(txtGiaNhap.Text),
+                MaDVTinh= Convert.ToInt32(cboDVTinh.SelectedValue),
+                MaMatHang= cboMatHang.SelectedValue.ToString(),
+                MaNhanhang=((tbMatHangModel)cboMatHang.SelectedItem).MaNhanHang,
+                SoLuong=Convert.ToInt32(txtSoLuong.Text),
+                TongTien= decimal.Parse(txtGiaNhap.Text)* Convert.ToInt32(txtSoLuong.Text)
+            });
         }
 
         private void frmTaoPhieuNhap_Load(object sender, EventArgs e)
@@ -177,6 +204,34 @@ namespace QuanLyNhapHang.View
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (dmMatHangNhap.Count==0)
+            {
+                MessageBox.Show("Không có mặt hàng nhập. Vui lòng thêm ít nhất 1 mặt hàng.");
+                return;
+            }
+            var result= dbDMPhieuNhapcontext.Add(new tbPhieuNhapModel
+            {
+                DMMatHangNhap=dmMatHangNhap.ToList()
+            });
+            if (result==true)
+            {
+                dmMatHangNhap.Clear();
+                cboDVTinh.SelectedIndex = 0;
+                cboNhanHang.SelectedIndex = 0;
+                cboMatHang.SelectedIndex = 0;
+                txtGiaNhap.Clear();
+                txtSoLuong.Clear();
+                dtpsNgayNhap.Value = DateTime.Now;
+                MessageBox.Show("thành công.");
+            }
+            else
+            {
+                MessageBox.Show("thất bại.");
             }
         }
     }

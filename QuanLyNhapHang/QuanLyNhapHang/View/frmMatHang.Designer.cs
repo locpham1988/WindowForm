@@ -85,7 +85,7 @@
             this.groupBox1.MinimumSize = new System.Drawing.Size(0, 203);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(707, 206);
+            this.groupBox1.Size = new System.Drawing.Size(977, 206);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -97,7 +97,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(505, 159);
+            this.button2.Location = new System.Drawing.Point(607, 159);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 36);
@@ -115,7 +115,7 @@
             this.btnRefresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRefresh.Image = global::QuanLyNhapHang.Properties.Resources.symbol_refresh;
             this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefresh.Location = new System.Drawing.Point(387, 159);
+            this.btnRefresh.Location = new System.Drawing.Point(489, 159);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(110, 36);
@@ -156,7 +156,7 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Image = global::QuanLyNhapHang.Properties.Resources.gnome_session_logout;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(611, 159);
+            this.button1.Location = new System.Drawing.Point(713, 159);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 36);
@@ -175,7 +175,7 @@
             this.btnCapNhat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCapNhat.Image = global::QuanLyNhapHang.Properties.Resources.documents_white_edit;
             this.btnCapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCapNhat.Location = new System.Drawing.Point(136, 159);
+            this.btnCapNhat.Location = new System.Drawing.Point(238, 159);
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(127, 36);
@@ -194,7 +194,7 @@
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSearch.Image = global::QuanLyNhapHang.Properties.Resources.search24;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(271, 159);
+            this.btnSearch.Location = new System.Drawing.Point(373, 159);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(108, 36);
@@ -213,7 +213,7 @@
             this.btncreate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btncreate.Image = global::QuanLyNhapHang.Properties.Resources.add;
             this.btncreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btncreate.Location = new System.Drawing.Point(16, 159);
+            this.btncreate.Location = new System.Drawing.Point(118, 159);
             this.btncreate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btncreate.Name = "btncreate";
             this.btncreate.Size = new System.Drawing.Size(112, 36);
@@ -293,7 +293,7 @@
             this.txtTenhang.Location = new System.Drawing.Point(118, 53);
             this.txtTenhang.MinimumSize = new System.Drawing.Size(200, 4);
             this.txtTenhang.Name = "txtTenhang";
-            this.txtTenhang.Size = new System.Drawing.Size(582, 26);
+            this.txtTenhang.Size = new System.Drawing.Size(852, 26);
             this.txtTenhang.TabIndex = 3;
             // 
             // lblTenhang
@@ -339,12 +339,13 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(707, 194);
+            this.groupBox2.Size = new System.Drawing.Size(977, 194);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
             // dgvMatHang
             // 
+            this.dgvMatHang.AllowUserToAddRows = false;
             this.dgvMatHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMatHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnMaHang,
@@ -357,7 +358,7 @@
             this.dgvMatHang.Name = "dgvMatHang";
             this.dgvMatHang.RowTemplate.Height = 30;
             this.dgvMatHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMatHang.Size = new System.Drawing.Size(699, 165);
+            this.dgvMatHang.Size = new System.Drawing.Size(969, 165);
             this.dgvMatHang.TabIndex = 0;
             this.dgvMatHang.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvMatHang_DataError);
             this.dgvMatHang.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvMatHang_UserDeletingRow);
@@ -414,7 +415,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(707, 400);
+            this.ClientSize = new System.Drawing.Size(977, 400);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

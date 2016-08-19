@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="QuanLyNhapHang.exe" size="825344">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="QuanLyNhapHang.exe" size="829440">
       <assemblyIdentity name="QuanLyNhapHang" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HhOEoJQTxAdxQiie8of3Fdtxl5H0z0b8YNhqM//AaXA=</dsig:DigestValue>
+        <dsig:DigestValue>zMvVtOOBegDGYmKllrZttaF79klpdcRxeIRf8QvXMqw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -101,22 +101,22 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="QLNH.sdf" size="131072" writeableType="applicationData">
+  <file name="QLNH.sdf" size="196608" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Viny3UMmRik9MgOpudTrOpV4Oxx3rbYnXyYt8ipktgA=</dsig:DigestValue>
+      <dsig:DigestValue>zkytp/vnjvhRK++NrD1miQCtJAZAi09x2pNKD+cCd/g=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="QuanLyNhapHang.exe.config" size="2110">
+  <file name="QuanLyNhapHang.exe.config" size="2365">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>eXep7VeqgsGfzNNW6vwCDa51+bbUGM/pnrBG9d6yy3E=</dsig:DigestValue>
+      <dsig:DigestValue>ivS6vxn9kNvSRZRL0r0aEWDFzXIVIVTUmlHBPuUKqA4=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

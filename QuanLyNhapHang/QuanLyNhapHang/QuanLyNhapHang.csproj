@@ -134,6 +134,7 @@
     <Compile Include="Helper\CommonHelper.cs" />
     <Compile Include="Helper\Md5Helper.cs" />
     <Compile Include="Model\CommonObjectModel.cs" />
+    <Compile Include="Model\GlobalContent.cs" />
     <Compile Include="Model\tbMatHangModel.cs" />
     <Compile Include="Model\tbMatHangNhapModel.cs" />
     <Compile Include="Model\tbPhieuNhapModel.cs" />
